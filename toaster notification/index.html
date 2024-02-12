@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>toast notification || omkar shelke</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>toast notification</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/e9ba64fbe2.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>toast notification by omkar shelke</h1><br>
     <div class="buttons">
-        <button onclick="showToast()">Success</button>
-        <button onclick="showToast()">Error</button>
-        <button onclick="showToast()">Invalid</button>
+      <button onclick="showToast(successMessage)">Success</button>
+      <button onclick="showToast(errorMessage)">Error</button>
+      <button onclick="showToast(invalidMessage)">Invalid</button>
     </div>
 
-    <div class="toastBox">
-
-    </div>
-
+    <div id="toastBox"></div>
 
     <script>
-
         let toastBox=document.getElementById('toastBox');
-        
-        function showToast(){
-            let toast=document.createElement('div');
-            toast.classList.add('toast');
-            toast.innerHTML='success';
-            toastBox.appendChild(toast);
+        let successMessage='<i class="fa-solid fa-circle-check"></i>Successfully submitted';
+        let errorMessage='<i class="fa-solid fa-triangle-exclamation"></i>please fix the error.';
+        let invalidMessage='<i class="fa-solid fa-circle-exclamation"></i>invalid input, check again.';
+
+      function showToast(msg) {
+        let toast=document.createElement('div');
+        toast.classList.add('toast');
+        toast.innerHTML=msg;
+        toastBox.appendChild(toast);
+
+        if(msg.includes('error')){
+            toast.classList.add('error');
         }
+        if(msg.includes('invalid')){
+            toast.classList.add('invalid');
+        }
+
+        // hide the notifications 
+        setTimeout(() =>{
+            toast.remove();
+        },6000)
+      }
     </script>
-</body>
+  </body>
 </html>
