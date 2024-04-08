@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vehicle number plate || omkarshelke</title>
+  </head>
+  <link rel="stylesheet" href="style.css" />
+  <body>
+    <div class="container">
+      <h1>Genrate a <span>random vehicle number plate</span></h1>
+      <div class="display">
+        <input type="text" name="" id="plateNumber" />
+        <img src="images/copy.png" alt="" onclick="copyNumber()" />
+      </div>
+      <button class="genrateButton" onclick="generateNumber()">
+        <img src="images/generate.png" alt="" />Generate
+      </button>
+    </div>
+
+    
+    <script>
+        const numberBox=document.getElementById('plateNumber');
+        const stateCodes = ["AP", "AR", "AS", "BR", "CG", "GA", "GJ", "HR", "HP", "JH", "KA", "KL", "MP", "MH", "MN", "ML", "MZ", "NL", "OD", "PB", "RJ", "SK", "TN", "TG", "TR", "UP", "UK", "WB"];
+
+        function getRandomElementFromArray(array){
+            return array[Math.floor(Math.random()*array.length)];
+        }
+
+        function generateNumber(){
+            const stateCode=getRandomElementFromArray(stateCodes);
+            const digits=("00"+Math.floor(Math.random()*100)).slice(-2);
+            const chars=String.fromCharCode(65+Math.floor(Math.random()*26));
+            const numbers=("0000"+Math.floor(Math.random()*10000)).slice(-4);
+
+            const number=`${stateCode} ${digits} ${chars} ${numbers}`;
+            numberBox.value=number;
+        }
+
+        function copyNumber(){
+            numberBox.select();
+            document.execCommand("copy");
+        }
+    </script>
+      
+  </body>
+</html>
