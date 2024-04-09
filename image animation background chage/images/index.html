@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background change || omkarshelke</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    
+    <div class="container">
+        <div class="img-box">
+            <img src="transparent.png" alt="" width="100%">
+
+            <div class="img-wrap">
+                <img src="original.jpg" alt="" id="originalImg">
+            </div>
+
+            <span id="line">
+                <img src="arrow.png" alt="" class="arrow">
+            </span>
+        </div>
+    </div>
+
+
+    <script>
+
+        let ImgBox=document.querySelector('.img-box');
+        let ImgWrap=document.querySelector('.img-wrap');
+        let leftSpace=ImgBox.offsetLeft;
+        let originalImg=document.getElementById('originalImg');
+
+        originalImg.style.width=ImgBox.offsetWidth+"px";
+        let line=document.getElementById('line');
+
+        ImgBox.onmousemove=function(e){
+           var boxWidth=(e.pageX-leftSpace)+"px";
+           ImgWrap.style.width=boxWidth;
+           line.style.left=boxWidth;
+        }
+    </script>
+</body>
+</html>
